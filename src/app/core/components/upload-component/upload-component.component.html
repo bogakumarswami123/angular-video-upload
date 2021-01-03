@@ -1,0 +1,32 @@
+<div class="video-upload-container">
+  <div class="video-upload-box" (click)="openFileSelect('video-upload-input')">
+    <span
+      class="material-icons"
+      *ngIf="videoUrl === null && uploadedVideoPer === null"
+    >
+      play_circle_filled
+    </span>
+    <div *ngIf="videoUrl === null && uploadedVideoPer === null">
+      Upload Video
+    </div>
+    <div class="progress" *ngIf="uploadedVideoPer !== null">
+      <div
+        class="progress-bar progress-bar-striped progress-bar-animated"
+        [style]="uploadedVideoPer"
+      ></div>
+    </div>
+    <video
+      *ngIf="videoUrl !== null"
+      height="130"
+      width="230"
+      [src]="videoUrl"
+    ></video>
+    <input
+      accept="video/mp4,video/x-m4v,video/*"
+      type="file"
+      class="d-none"
+      id="video-upload-input"
+      (change)="handleVideoUpload($event)"
+    />
+  </div>
+</div>
